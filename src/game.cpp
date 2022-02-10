@@ -1,18 +1,24 @@
 #include "game.h"
 
 
-game::game(const int width, const int height) :
-	width(width), height(height)
+Game::Game(const int width, const int height) :
+	m_width(width), m_height(height)
 {
-	window = glfwCreateWindow(width, height, "Pong2", NULL, NULL);
+	m_window = glfwCreateWindow(width, height, "Pong2", NULL, NULL);
 }
 
-game::~game()
+Game::~Game()
 {
-	glfwDestroyWindow(window);
+	glfwDestroyWindow(m_window);
 }
 
-void game::proccessInput()
+void Game::init()
 {
 
 }
+
+void Game::proccessInput()
+{
+
+}
+

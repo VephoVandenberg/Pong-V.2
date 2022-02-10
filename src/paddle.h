@@ -1,5 +1,8 @@
 #pragma once
-class paddle
+
+class Paddle
 {
+public:
+private:
 };
 

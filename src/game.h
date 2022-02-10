@@ -3,16 +3,17 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-class game
+class Game
 {
 public:
-	GLFWwindow* window;
+	GLFWwindow* m_window;
 public:
-	game(const int width = 800, const int height = 800);
+	Game(const int width = 800, const int height = 800);
 	void proccessInput();
-	~game();
+	void init();
+	~Game();
 private:
-	const int width;
-	const int height;
+	const int m_width;
+	const int m_height;
 };
 

@@ -1,5 +1,5 @@
 #pragma once
-class ball
+class Ball
 {
 public:
 private:
