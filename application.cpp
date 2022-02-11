@@ -12,8 +12,9 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	Game app(width, height);
-	glfwMakeContextCurrent(app.m_window);
+	GLFWwindow* window = glfwCreateWindow(width, height, "Pong2", NULL, NULL);
+	Game app(window, width, height);
+	glfwMakeContextCurrent(window);
 
 	if (glewInit() != GLEW_OK)
 	{
@@ -21,11 +22,11 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	while (!glfwWindowShouldClose(app.m_window))
+	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glfwSwapBuffers(app.m_window);
+		glfwSwapBuffers(window);
 		app.proccessInput();
 		glfwPollEvents();
 	}
