@@ -2,11 +2,11 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "paddle.h"
 #include "ball.h"
 #include "renderer.h"
-#include "shaderHandler.h"
 
 class Game
 {

@@ -28,6 +28,8 @@ int main(int argc, char** argv)
 
 		glfwSwapBuffers(window);
 		app.proccessInput();
+		app.updateObjects();
+		app.renderObjects();
 		glfwPollEvents();
 	}
 
