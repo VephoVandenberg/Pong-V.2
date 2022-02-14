@@ -47,7 +47,7 @@ Shader::Shader(const char* vPath, const char* fPath)
 	if (!success)
 	{
 		glGetShaderInfoLog(vShader, 512, NULL, infolog);
-		std::cout << "VERTES:" << infolog;
+		std::cout << "VERTEX:" << infolog;
 	}
 
 	unsigned int fShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -60,7 +60,7 @@ Shader::Shader(const char* vPath, const char* fPath)
 		std::cout << "FRAGMENT:" << infolog;
 	}
 
-	unsigned int ID = glCreateProgram();
+	ID = glCreateProgram();
 	glAttachShader(ID, vShader);
 	glAttachShader(ID, fShader);
 	glLinkProgram(ID);
@@ -72,4 +72,24 @@ Shader::Shader(const char* vPath, const char* fPath)
 Shader::~Shader()
 {
 
+}
+
+void Shader::use()
+{
+	glUseProgram(ID);
+}
+
+void Shader::setMatrix4m(const char* uniform, glm::mat4& mat)
+{
+	glUniformMatrix4fv(glGetUniformLocation(ID, uniform), 1, false, glm::value_ptr(mat));
+}
+
+void Shader::setVector2v(const char* uniform, glm::vec2& vector)
+{
+	glUniform2f(glGetUniformLocation(ID, uniform), vector.x, vector.y);
+}
+
+void Shader::setVector3v(const char* uniform, glm::vec3& vector)
+{
+	glUniform3f(glGetUniformLocation(ID, uniform), vector.x, vector.y, vector.z);
 }

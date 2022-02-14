@@ -1,8 +1,8 @@
 #include <iostream>
 #include "src/game.h"
 
-const int width = 500;
-const int height = 500;
+const int width = 800;
+const int height = 800;
 
 int main(int argc, char** argv)
 {
@@ -13,7 +13,6 @@ int main(int argc, char** argv)
 	}
 
 	GLFWwindow* window = glfwCreateWindow(width, height, "Pong2", NULL, NULL);
-	Game app(window, width, height);
 	glfwMakeContextCurrent(window);
 
 	if (glewInit() != GLEW_OK)
@@ -22,15 +21,21 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
+	Game app(window, width, height);
+	app.init();
+
 	while (!glfwWindowShouldClose(window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		glfwSwapBuffers(window);
+		glfwPollEvents();
 		app.proccessInput();
 		app.updateObjects();
+
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		app.renderObjects();
-		glfwPollEvents();
+
+		glfwSwapBuffers(window);
 	}
 
 	return 0;
