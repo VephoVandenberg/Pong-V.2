@@ -14,6 +14,7 @@ class Game
 {
 public:
 	bool keys[1024];
+	bool keysProcessed[1024];
 public:
 	GameObject* m_player1;
 	GameObject* m_player2;
@@ -24,8 +25,8 @@ public:
 	Game(const int width = 800, const int height = 800);
 	~Game();
 
-	void proccessInput();
-	void updateObjects();
+	void proccessInput(float dt);
+	void updateObjects(float dt);
 	void renderObjects();
 	void init();
 
@@ -36,7 +37,8 @@ private:
 	glm::vec3 m_player1Color = glm::vec3(1.0f, 0.0f, 0.0f);
 	glm::vec3 m_player2Color = glm::vec3(0.0f, 0.0f, 1.0f);
 	glm::vec2 m_paddleSize = glm::vec2(20.0f, 150.0f);
-	
+	float m_paddleSpeed = 250.0f;
+
 	float m_radius = 25;
 	glm::vec3 m_ballColor = glm::vec3(1.0f);
 };

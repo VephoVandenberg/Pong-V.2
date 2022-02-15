@@ -38,8 +38,8 @@ int main(int argc, char** argv)
 		lastFrame = currentTime;
 
 		glfwPollEvents();
-		app.proccessInput();
-		app.updateObjects();
+		app.proccessInput(dt);
+		app.updateObjects(dt);
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -62,7 +62,8 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 		}
 		else if (action == GLFW_RELEASE)
 		{
-			app.keys[key] == false;
+			app.keys[key] = false;
+			app.keysProcessed[key] = false;
 		}
 	}
 }

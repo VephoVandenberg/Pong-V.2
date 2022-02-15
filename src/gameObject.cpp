@@ -11,11 +11,6 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::move(glm::vec2 newPos)
-{
-
-}
-
 void GameObject::draw(Renderer& renderer, Shader& shader)
 {
 	renderer.draw(m_pos, m_size, m_color, shader);

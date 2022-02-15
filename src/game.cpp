@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "game.h"
 #include "resourceManager.h"
 
@@ -38,12 +40,44 @@ void Game::init()
 	ResourceManager::getShader("ball").setMatrix4m("projection", projection);
 }
 
-void Game::proccessInput()
+void Game::proccessInput(float dt)
 {
+	if (keys[GLFW_KEY_W])
+	{
+		float dSpeed = -m_paddleSpeed * dt;
+		if (m_player1->m_pos.y >= 0.0f)
+		{
+			m_player1->m_pos.y += dSpeed;
+		}
+	}
+	if (keys[GLFW_KEY_S])
+	{
+		float dSpeed = m_paddleSpeed * dt;
+		if (m_player1->m_pos.y + m_player1->m_size.y <= m_height)
+		{
+			m_player1->m_pos.y += dSpeed;
+		}
+	}
 
+	if (keys[GLFW_KEY_UP])
+	{
+		float dSpeed = -m_paddleSpeed * dt;
+		if (m_player2->m_pos.y >= 0.0f)
+		{
+			m_player2->m_pos.y += dSpeed;
+		}
+	}
+	if (keys[GLFW_KEY_DOWN])
+	{
+		float dSpeed = m_paddleSpeed * dt;
+		if (m_player2->m_pos.y + m_player2->m_size.y <= m_height)
+		{
+			m_player2->m_pos.y += dSpeed;
+		}
+	}
 }
 
-void Game::updateObjects() 
+void Game::updateObjects(float dt) 
 {
 
 }

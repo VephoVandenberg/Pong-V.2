@@ -7,8 +7,10 @@ uniform vec3 color;
 
 void main()
 {
-	vec2 uv = gl_FragCoord.xy/fragRadius*2.0f - 1.0f;
+	vec2 uv = gl_FragCoord.xy;
+	uv.x /= fragRadius;
+	uv.y /= fragRadius;
 
-	float distance = length(uv);
-	outColor = vec4(vec3(distnace), 1.0f);
+	float distance = 1.0f - length(uv);
+	outColor = vec4(vec3(distance), 1.0f);
 }
