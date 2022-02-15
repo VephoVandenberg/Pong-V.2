@@ -6,32 +6,38 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "paddle.h"
+#include "gameObject.h"
 #include "ball.h"
 #include "renderer.h"
 
 class Game
 {
 public:
-	GLFWwindow* m_window;
-
-	Paddle* m_player1;
-	Paddle* m_player2;
+	bool keys[1024];
+public:
+	GameObject* m_player1;
+	GameObject* m_player2;
 	Renderer* m_renderer;
 	Ball* m_ball;
 
 public:
-	Game(GLFWwindow* window, const int width = 800, const int height = 800);
+	Game(const int width = 800, const int height = 800);
 	~Game();
+
 	void proccessInput();
 	void updateObjects();
 	void renderObjects();
 	void init();
+
 private:
 	const int m_width;
 	const int m_height;
 
-private:
+	glm::vec3 m_player1Color = glm::vec3(1.0f, 0.0f, 0.0f);
+	glm::vec3 m_player2Color = glm::vec3(0.0f, 0.0f, 1.0f);
+	glm::vec2 m_paddleSize = glm::vec2(20.0f, 150.0f);
 	
+	float m_radius = 25;
+	glm::vec3 m_ballColor = glm::vec3(1.0f);
 };
 

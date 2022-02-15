@@ -22,6 +22,11 @@ void Renderer::draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader& sh
 	shader.setMatrix4m("model", model);
 	shader.setVector3v("color", color);
 	
+	if (size.x == size.y)
+	{
+		shader.setUniformf("radius", size.x);
+	}
+
 	glBindVertexArray(m_quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);

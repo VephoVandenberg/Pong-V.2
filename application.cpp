@@ -1,8 +1,12 @@
 #include <iostream>
 #include "src/game.h"
 
-const int width = 800;
+const int width = 1000;
 const int height = 800;
+
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+
+Game app(width, height);
 
 int main(int argc, char** argv)
 {
@@ -21,11 +25,18 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	Game app(window, width, height);
+	glfwSetKeyCallback(window, keyCallback);
 	app.init();
+
+	float dt = 0.0f;
+	float lastFrame = 0.0f;
 
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentTime = glfwGetTime();
+		dt = currentTime - lastFrame;
+		lastFrame = currentTime;
+
 		glfwPollEvents();
 		app.proccessInput();
 		app.updateObjects();
@@ -39,4 +50,19 @@ int main(int argc, char** argv)
 	}
 
 	return 0;
+}
+
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	if (key >= 0 && key <= 1024)
+	{
+		if (action == GLFW_PRESS)
+		{
+			app.keys[key] = true;
+		}
+		else if (action == GLFW_RELEASE)
+		{
+			app.keys[key] == false;
+		}
+	}
 }
