@@ -10,7 +10,7 @@ Game::Game(const int width, const int height) :
 }
 
 Game::~Game()
-{
+{	
 	delete m_player1;
 	delete m_player2;
 	delete m_ball;
@@ -23,11 +23,11 @@ void Game::init()
 
 	glm::vec2 player1Pos(0.0f, m_height/2 - m_paddleSize.y/2);
 	glm::vec2 player2Pos(m_width - m_paddleSize.x, m_height/2 - m_paddleSize.y/2);
-	glm::vec2 ballPos(m_width / 2, m_height / 2);
+	glm::vec2 ballPos(0.0f, m_height-m_radius*2);
 
 	m_player1 = new GameObject(player1Pos, m_paddleSize, m_player1Color);
 	m_player2 = new GameObject(player2Pos, m_paddleSize, m_player2Color);
-	m_ball = new Ball(m_radius, ballPos, m_ballColor);
+	m_ball = new Ball(2*m_radius, ballPos, m_ballColor);
 	m_renderer = new Renderer();
 	
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(m_width), 
@@ -42,18 +42,17 @@ void Game::init()
 
 void Game::proccessInput(float dt)
 {
+	float dSpeed = m_paddleSpeed * dt;
 	if (keys[GLFW_KEY_W])
 	{
-		float dSpeed = -m_paddleSpeed * dt;
 		if (m_player1->m_pos.y >= 0.0f)
 		{
-			m_player1->m_pos.y += dSpeed;
+			m_player1->m_pos.y -= dSpeed;
 		}
 	}
 	if (keys[GLFW_KEY_S])
 	{
-		float dSpeed = m_paddleSpeed * dt;
-		if (m_player1->m_pos.y + m_player1->m_size.y <= m_height)
+		if (m_player1->m_pos.y + m_paddleSize.y <= m_height)
 		{
 			m_player1->m_pos.y += dSpeed;
 		}
@@ -61,16 +60,14 @@ void Game::proccessInput(float dt)
 
 	if (keys[GLFW_KEY_UP])
 	{
-		float dSpeed = -m_paddleSpeed * dt;
 		if (m_player2->m_pos.y >= 0.0f)
 		{
-			m_player2->m_pos.y += dSpeed;
+			m_player2->m_pos.y -= dSpeed;
 		}
 	}
 	if (keys[GLFW_KEY_DOWN])
 	{
-		float dSpeed = m_paddleSpeed * dt;
-		if (m_player2->m_pos.y + m_player2->m_size.y <= m_height)
+		if (m_player2->m_pos.y + m_paddleSize.y <= m_height)
 		{
 			m_player2->m_pos.y += dSpeed;
 		}

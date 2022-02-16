@@ -1,16 +1,24 @@
 #version 330 core
 
-in float fragRadius;
+in vec2 pos;
 out vec4 outColor;
 
 uniform vec3 color;
+uniform float doubleRadius;
 
 void main()
 {
-	vec2 uv = gl_FragCoord.xy;
-	uv.x /= fragRadius;
-	uv.y /= fragRadius;
+	// Here doubleRadius means resolution
+
+	vec2 uv = gl_FragCoord.xy/doubleRadius*2.0f - 1.0f;
 
 	float distance = 1.0f - length(uv);
-	outColor = vec4(vec3(distance), 1.0f);
+	if (distance > 0.0f)
+	{
+		outColor = vec4(color, 1.0f);
+	}
+	else
+	{
+		outColor = vec4(vec2(distance), 0.0f, 1.0f);
+	}
 }

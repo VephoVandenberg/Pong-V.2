@@ -24,7 +24,7 @@ void Renderer::draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader& sh
 	
 	if (size.x == size.y)
 	{
-		shader.setUniformf("radius", size.x);
+		shader.setUniformf("doubleRadius", size.x);
 	}
 
 	glBindVertexArray(m_quadVAO);

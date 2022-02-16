@@ -22,7 +22,7 @@ public:
 	Ball* m_ball;
 
 public:
-	Game(const int width = 800, const int height = 800);
+	Game(const int width = 1000, const int height = 800);
 	~Game();
 
 	void proccessInput(float dt);
@@ -39,7 +39,7 @@ private:
 	glm::vec2 m_paddleSize = glm::vec2(20.0f, 150.0f);
 	float m_paddleSpeed = 250.0f;
 
-	float m_radius = 25;
+	float m_radius = 12.5f;
 	glm::vec3 m_ballColor = glm::vec3(1.0f);
 };
 

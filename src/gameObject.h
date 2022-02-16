@@ -9,7 +9,6 @@ class GameObject
 {
 public:
 	glm::vec2 m_pos;
-	glm::vec2 m_size;
 
 public:
 	GameObject(glm::vec2 m_pos, glm::vec2 size, glm::vec3 color);
@@ -19,4 +18,6 @@ public:
 
 private:
 	glm::vec3 m_color;
+	glm::vec2 m_size;
+
 };

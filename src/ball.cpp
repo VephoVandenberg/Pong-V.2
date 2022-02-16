@@ -12,10 +12,6 @@ Ball::~Ball()
 
 }
 
-void Ball::move(glm::vec2 newPos)
-{
-
-}
 
 void Ball::draw(Renderer& renderer, Shader& shader)
 {
