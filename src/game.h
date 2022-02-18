@@ -39,7 +39,7 @@ private:
 	glm::vec2 m_paddleSize = glm::vec2(20.0f, 150.0f);
 	float m_paddleSpeed = 250.0f;
 
-	float m_radius = 12.5f;
+	float m_radius = 13.5f;
 	glm::vec3 m_ballColor = glm::vec3(1.0f);
 };
 

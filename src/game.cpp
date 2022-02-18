@@ -23,7 +23,7 @@ void Game::init()
 
 	glm::vec2 player1Pos(0.0f, m_height/2 - m_paddleSize.y/2);
 	glm::vec2 player2Pos(m_width - m_paddleSize.x, m_height/2 - m_paddleSize.y/2);
-	glm::vec2 ballPos(0.0f, m_height-m_radius*2);
+	glm::vec2 ballPos(m_width/2, m_height/2);
 
 	m_player1 = new GameObject(player1Pos, m_paddleSize, m_player1Color);
 	m_player2 = new GameObject(player2Pos, m_paddleSize, m_player2Color);
@@ -36,7 +36,9 @@ void Game::init()
 	ResourceManager::getShader("paddle").use();
 	ResourceManager::getShader("paddle").setMatrix4m("projection", projection);
 
+	glm::vec2 fragmentBallPos = glm::vec2(ballPos.x, m_height-ballPos.y-m_radius*2);
 	ResourceManager::getShader("ball").use();
+	ResourceManager::getShader("ball").setVector2v("pos", fragmentBallPos);
 	ResourceManager::getShader("ball").setMatrix4m("projection", projection);
 }
 
