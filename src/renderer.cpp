@@ -2,7 +2,8 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-Renderer::Renderer()
+Renderer::Renderer(float width, float height):
+	m_width(width), m_height(height)
 {
 	initRenderData();
 }
@@ -24,6 +25,8 @@ void Renderer::draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader& sh
 	
 	if (size.x == size.y)
 	{
+		glm::vec2 fragmentBallPos = glm::vec2(pos.x, m_height-pos.y-size.y);
+		shader.setVector2v("pos", fragmentBallPos);
 		shader.setUniformf("doubleRadius", size.x);
 	}
 

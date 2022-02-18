@@ -11,6 +11,5 @@ void main()
 	vec2 uv  = (gl_FragCoord.xy-pos)/doubleRadius*2.0f-1.0f;
 
 	float distance = 1.0f - length(uv);
-	outColor = vec4(vec3(smoothstep(0.0f, 0.1f, distance)), 1.0f);
+	outColor = vec4(vec3(smoothstep(0.0f, 0.2f, distance)), 1.0f);
 }
-	

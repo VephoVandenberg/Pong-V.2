@@ -27,8 +27,8 @@ void Game::init()
 
 	m_player1 = new GameObject(player1Pos, m_paddleSize, m_player1Color);
 	m_player2 = new GameObject(player2Pos, m_paddleSize, m_player2Color);
-	m_ball = new Ball(2*m_radius, ballPos, m_ballColor);
-	m_renderer = new Renderer();
+	m_ball = new Ball(m_radius, ballPos, m_ballVelocity, m_ballColor);
+	m_renderer = new Renderer(m_width, m_height);
 	
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(m_width), 
 		static_cast<float>(m_height), 0.0f, -1.0f, 1.0f);
@@ -36,15 +36,13 @@ void Game::init()
 	ResourceManager::getShader("paddle").use();
 	ResourceManager::getShader("paddle").setMatrix4m("projection", projection);
 
-	glm::vec2 fragmentBallPos = glm::vec2(ballPos.x, m_height-ballPos.y-m_radius*2);
 	ResourceManager::getShader("ball").use();
-	ResourceManager::getShader("ball").setVector2v("pos", fragmentBallPos);
 	ResourceManager::getShader("ball").setMatrix4m("projection", projection);
 }
 
 void Game::proccessInput(float dt)
 {
-	float dSpeed = m_paddleSpeed * dt;
+	float dSpeed = m_paddleVelocity * dt;
 	if (keys[GLFW_KEY_W])
 	{
 		if (m_player1->m_pos.y >= 0.0f)
@@ -76,9 +74,29 @@ void Game::proccessInput(float dt)
 	}
 }
 
+bool Game::checkCollision(GameObject& one, Ball& two)
+{
+	bool collisionX = (one.m_pos.x + one.m_size.x >= two.m_pos.x) && 
+					  (two.m_pos.x + two.m_size.x >= one.m_pos.x);
+	
+	bool collisionY = (one.m_pos.y + one.m_size.y >= two.m_pos.y) &&
+					  (two.m_pos.y + two.m_size.y >= one.m_pos.y);
+
+	return collisionX && collisionY;
+}
+
+void Game::doCollisions()
+{
+	if (checkCollision(*m_player1, *m_ball) || checkCollision(*m_player2, *m_ball))
+	{
+		m_ball->m_velocity.x = -m_ball->m_velocity.x;
+	}
+}
+
 void Game::updateObjects(float dt) 
 {
-
+	m_ball->move(dt, m_height);
+	doCollisions();
 }
 
 void Game::renderObjects()

@@ -37,16 +37,16 @@ int main(int argc, char** argv)
 		dt = currentTime - lastFrame;
 		lastFrame = currentTime;
 
-		glfwPollEvents();
-		app.proccessInput(dt);
-		app.updateObjects(dt);
-
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		app.renderObjects();
 
 		glfwSwapBuffers(window);
+
+		glfwPollEvents();
+		app.proccessInput(dt);
+		app.updateObjects(dt);
 	}
 
 	return 0;
