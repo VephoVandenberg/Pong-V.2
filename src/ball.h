@@ -6,12 +6,11 @@
 #include "renderer.h"
 #include "gameObject.h"
 
-class Ball
+class Ball : public GameObject
 {
 public:
-	glm::vec2 m_pos;
 	glm::vec2 m_velocity;
-	glm::vec2 m_size;
+	float m_radius;
 
 public:
 	Ball(float radius, glm::vec2 pos, glm::vec2 velocity, glm::vec3 color);
@@ -20,7 +19,4 @@ public:
 	void draw(Renderer& renderer, Shader& shader);
 	void move(float dt, float height);
 
-private:
-	float m_radius;
-	glm::vec3 m_color;
 };

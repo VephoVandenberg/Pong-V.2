@@ -1,10 +1,10 @@
 #include "ball.h"
 
 
-Ball::Ball(float radius, glm::vec2 pos, glm::vec2 velocity, glm::vec3 color):
-	m_radius(radius), m_pos(pos), m_velocity(velocity), m_color(color)
+Ball::Ball(float radius, glm::vec2 pos, glm::vec2 velocity, glm::vec3 color) :
+	GameObject(pos, glm::vec2(radius*2), color), m_radius(radius), m_velocity(velocity)
 {
-	m_size = glm::vec2(radius * 2);
+
 }
 
 Ball::~Ball()
@@ -31,4 +31,4 @@ void Ball::move(float dt, float height)
 void Ball::draw(Renderer& renderer, Shader& shader)
 {
 	renderer.draw(m_pos, m_size, m_color, shader);
-}
+} 
