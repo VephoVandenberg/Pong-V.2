@@ -98,3 +98,8 @@ void Shader::setUniformf(const char* uniform, float value)
 {
 	glUniform1f(glGetUniformLocation(ID, uniform), value);
 }
+
+void Shader::setUniformi(const char* uniform, int value)
+{
+	glUniform1i(glGetUniformLocation(ID, uniform), value);
+}

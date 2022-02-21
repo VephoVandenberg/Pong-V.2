@@ -26,6 +26,8 @@ int main(int argc, char** argv)
 	}
 
 	glfwSetKeyCallback(window, keyCallback);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	app.init();
 
 	float dt = 0.0f;
