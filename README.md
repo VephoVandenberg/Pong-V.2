@@ -1,3 +1,3 @@
 # Pong-V.2
 
-Another version on pong using OpenGL.
+Another version of Pong game using OpenGL.
