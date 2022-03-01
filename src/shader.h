@@ -12,7 +12,8 @@ public:
 	~Shader();
 
 	void use();
-	void setMatrix4m(const char *uniform, glm::mat4& mat);
+	void unUse();
+	void setMatrix4m(const char *uniform, glm::mat4 mat);
 	void setVector2v(const char *uniform, glm::vec2& vector);
 	void setVector3v(const char *uniform, glm::vec3& color);
 	void setUniformi(const char* uniform, int value);

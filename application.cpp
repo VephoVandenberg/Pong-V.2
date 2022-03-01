@@ -26,9 +26,11 @@ int main(int argc, char** argv)
 	}
 
 	glfwSetKeyCallback(window, keyCallback);
+	glViewport(0, 0, width, height);
+	
+	app.init();
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	app.init();
 
 	float dt = 0.0f;
 	float lastFrame = 0.0f;
@@ -39,16 +41,19 @@ int main(int argc, char** argv)
 		dt = currentTime - lastFrame;
 		lastFrame = currentTime;
 
+		glfwPollEvents();
+		app.proccessInput(dt);
+		
+
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		app.updateObjects(dt);
 		app.renderObjects();
 
 		glfwSwapBuffers(window);
 
-		glfwPollEvents();
-		app.proccessInput(dt);
-		app.updateObjects(dt);
+		
 	}
 
 	return 0;

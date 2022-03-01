@@ -191,8 +191,8 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static tvec4<float, P> call(tvec4<float, P> const & x, tvec4<float, P> const & y, tvec4<bool, P> const & a)
 		{
-			__m128i const Load = _mm_set_epi32(-(int)a.w, -(int)a.z, -(int)a.y, -(int)a.x);
-			__m128 const Mask = _mm_castsi128_ps(Load);
+			__m128i const loadFont = _mm_set_epi32(-(int)a.w, -(int)a.z, -(int)a.y, -(int)a.x);
+			__m128 const Mask = _mm_castsi128_ps(loadFont);
 
 			tvec4<float, P> Result(uninitialize);
 #			if 0 && GLM_ARCH & GLM_ARCH_AVX

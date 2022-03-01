@@ -20,7 +20,6 @@ void Game::init()
 {
 	ResourceManager::loadShader("shaders/paddle.vert", "shaders/paddle.frag", "paddle");
 	ResourceManager::loadShader("shaders/ball.vert", "shaders/ball.frag", "ball");
-	ResourceManager::loadShader("shaders/text.vert", "shaders/text.frag", "text2D");
 
 	glm::vec2 player1Pos(0.0f, m_height/2 - m_paddleSize.y/2);
 	glm::vec2 player2Pos(m_width - m_paddleSize.x, m_height/2 - m_paddleSize.y/2);
@@ -30,21 +29,16 @@ void Game::init()
 	m_player2 = new GameObject(player2Pos, m_paddleSize, m_player2Color);
 	m_ball = new Ball(m_radius, ballPos, m_ballVelocity, m_ballColor);
 	m_renderer = new Renderer(m_width, m_height);
-	m_textRenderer = new Text();
-	m_textRenderer->loadFont("fonts/ocraext.ttf", 21);
-	
+
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(m_width), 
 		static_cast<float>(m_height), 0.0f, -1.0f, 1.0f);
+
 
 	ResourceManager::getShader("paddle").use();		
 	ResourceManager::getShader("paddle").setMatrix4m("projection", projection);
 
 	ResourceManager::getShader("ball").use();
 	ResourceManager::getShader("ball").setMatrix4m("projection", projection);
-
-	ResourceManager::getShader("text2D").use();
-	ResourceManager::getShader("text2D").setUniformi("text", 0);
-	ResourceManager::getShader("text2D").setMatrix4m("projection", projection);
 
 }
 
@@ -184,11 +178,13 @@ void Game::updateObjects(float dt)
 	{
 		m_player2Score++;
 		m_ball->m_pos = glm::vec2(m_width / 2, m_height / 2);
+		std::cout << "Score->" << m_player1Score << " " << m_player2Score << std::endl;
 	}
 	else if (m_ball->m_pos.x > m_width)
 	{
 		m_player1Score++;
 		m_ball->m_pos = glm::vec2(m_width / 2, m_height / 2);
+		std::cout << "Score-> " << m_player1Score << ":" << m_player2Score << std::endl;
 	}
 }
 
@@ -197,6 +193,6 @@ void Game::renderObjects()
 	m_player1->draw(*m_renderer, ResourceManager::getShader("paddle"));
 	m_player2->draw(*m_renderer, ResourceManager::getShader("paddle"));
 	m_ball->draw(*m_renderer, ResourceManager::getShader("ball"));
-	m_textRenderer->renderText("SCORE", m_width / 2, m_height  / 2, 0.5f, m_textColor, ResourceManager::getShader("text2D"));
+
 }
 

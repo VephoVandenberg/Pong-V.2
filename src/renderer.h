@@ -11,7 +11,7 @@ public:
 	Renderer(float width, float height);
 	~Renderer();
 
-	void draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader& shader);
+	void draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader shader);
 
 private:
 	unsigned int m_quadVAO;

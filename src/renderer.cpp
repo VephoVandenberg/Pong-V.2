@@ -13,7 +13,7 @@ Renderer::~Renderer()
 
 }
 
-void Renderer::draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader& shader)
+void Renderer::draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader shader)
 {
 	shader.use();
 	glm::mat4 model = glm::mat4(1.0f);
@@ -33,6 +33,7 @@ void Renderer::draw(glm::vec2 pos, glm::vec2& size, glm::vec3& color, Shader& sh
 	glBindVertexArray(m_quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+	// shader.unUse();
 }
 
 void Renderer::initRenderData()

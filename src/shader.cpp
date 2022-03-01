@@ -79,7 +79,12 @@ void Shader::use()
 	glUseProgram(ID);
 }
 
-void Shader::setMatrix4m(const char* uniform, glm::mat4& mat)
+void Shader::unUse()
+{
+	glUseProgram(0);
+}
+
+void Shader::setMatrix4m(const char* uniform, glm::mat4 mat)
 {
 	glUniformMatrix4fv(glGetUniformLocation(ID, uniform), 1, false, glm::value_ptr(mat));
 }

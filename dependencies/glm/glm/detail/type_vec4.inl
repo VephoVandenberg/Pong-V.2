@@ -79,7 +79,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_and
 	{
 		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & a, tvec4<T, P> const & b)
@@ -88,7 +88,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_or
 	{
 		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & a, tvec4<T, P> const & b)
@@ -97,7 +97,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_xor
 	{
 		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & a, tvec4<T, P> const & b)
@@ -106,7 +106,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_shift_left
 	{
 		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & a, tvec4<T, P> const & b)
@@ -115,7 +115,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_shift_right
 	{
 		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & a, tvec4<T, P> const & b)
@@ -124,7 +124,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_equal
 	{
 		GLM_FUNC_QUALIFIER static bool call(tvec4<T, P> const & v1, tvec4<T, P> const & v2)
@@ -133,7 +133,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_nequal
 	{
 		GLM_FUNC_QUALIFIER static bool call(tvec4<T, P> const & v1, tvec4<T, P> const & v2)
@@ -142,7 +142,7 @@ namespace detail
 		}
 	};
 
-	template <typename T, precision P, int IsInt, std::size_t Size, bool Aligned>
+	template <typename T, precision P, int IsInt, std::size_t size, bool Aligned>
 	struct compute_vec4_bitwise_not
 	{
 		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & v)

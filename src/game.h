@@ -11,7 +11,7 @@
 #include "gameObject.h"
 #include "ball.h"
 #include "renderer.h"
-#include "text.h"
+
 
 enum class Direction
 {
@@ -34,7 +34,6 @@ public:
 	GameObject* m_player2;
 	Renderer* m_renderer;
 	Ball* m_ball;
-	Text* m_textRenderer;
 
 public:
 	Game(const int width = 1000, const int height = 800);
@@ -67,6 +66,6 @@ private:
 
 	int m_player1Score = 0;
 	int m_player2Score = 0;
-	glm::vec3 m_textColor = glm::vec3(1.0f);
+	glm::vec3 m_textColor = glm::vec3(1.0f, 1.0f, 0.0f);
 };
 
