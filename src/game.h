@@ -62,10 +62,10 @@ private:
 
 	float m_radius = 15.0f;
 	glm::vec2 m_ballVelocity = glm::vec2(300.0f, 300.0f);
-	glm::vec3 m_ballColor = glm::vec3(1.0f);
+	glm::vec3 m_ballColor = glm::vec3(0.5f, 1.0f, 0.5f);
 
 	int m_player1Score = 0;
 	int m_player2Score = 0;
-	glm::vec3 m_textColor = glm::vec3(1.0f, 1.0f, 0.0f);
+	glm::vec3 m_textColor = glm::vec3(0.5f, 0.0f, 0.5f);
 };
 
