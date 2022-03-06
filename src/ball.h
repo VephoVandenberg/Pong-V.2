@@ -16,7 +16,6 @@ public:
 	Ball(float radius, glm::vec2 pos, glm::vec2 velocity, glm::vec3 color);
 	~Ball();
 
-	void draw(Renderer& renderer, Shader& shader);
 	void move(float dt, float height);
 
 };

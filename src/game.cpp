@@ -178,7 +178,7 @@ void Game::updateObjects(float dt)
 	{
 		m_player2Score++;
 		m_ball->m_pos = glm::vec2(m_width / 2, m_height / 2);
-		std::cout << "Score->" << m_player1Score << " " << m_player2Score << std::endl;
+		std::cout << "Score-> " << m_player1Score << ":" << m_player2Score << std::endl;
 	}
 	else if (m_ball->m_pos.x > m_width)
 	{

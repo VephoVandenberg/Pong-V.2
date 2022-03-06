@@ -27,8 +27,3 @@ void Ball::move(float dt, float height)
 		m_pos.y = height-2*m_radius;
 	}
 }
-
-void Ball::draw(Renderer& renderer, Shader& shader)
-{
-	renderer.draw(m_pos, m_size, m_color, shader);
-} 
