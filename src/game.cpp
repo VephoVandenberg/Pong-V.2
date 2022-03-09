@@ -14,6 +14,7 @@ Game::~Game()
 	delete m_player1;
 	delete m_player2;
 	delete m_ball;
+	delete m_renderer;
 }
 
 void Game::init()
